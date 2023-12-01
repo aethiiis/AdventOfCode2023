@@ -1,9 +1,12 @@
 package day1
 
-import "unicode"
+import (
+	"advent_of_code_2023/src/utilities"
+	"unicode"
+)
 
-func main() {
-	lines := readLines("day1")
+func Day1() {
+	lines := utilities.ReadLines("day1")
 	sum := 0
 	str := ""
 	for i := 0; i < len(lines); i++ {

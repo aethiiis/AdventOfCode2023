@@ -1,4 +1,4 @@
-package day1
+package utilities
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func readLines(filename string) []string {
+func ReadLines(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Printf("Erreur dans l'ouverture")

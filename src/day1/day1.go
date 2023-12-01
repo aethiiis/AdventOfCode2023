@@ -6,7 +6,7 @@ import (
 )
 
 func Day1() {
-	lines := utilities.ReadLines("day1")
+	lines := utilities.ReadLines("input_day1")
 	sum := 0
 	str := ""
 	for i := 0; i < len(lines); i++ {

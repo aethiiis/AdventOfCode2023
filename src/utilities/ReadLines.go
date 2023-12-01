@@ -9,13 +9,13 @@ import (
 func ReadLines(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Printf("Erreur dans l'ouverture")
+		fmt.Printf("Erreur dans l'ouverture\n")
 	}
 
 	defer func(file *os.File) {
 		err := file.Close()
 		if err != nil {
-			fmt.Printf("Erreur dans la fermeture")
+			fmt.Printf("Erreur dans la fermeture\n")
 		}
 	}(file)
 

@@ -2,10 +2,13 @@ package day1
 
 import (
 	"advent_of_code_2023/src/utilities"
+	"fmt"
+	"time"
 	"unicode"
 )
 
 func Day1() {
+	debut := time.Now()
 	lines := utilities.ReadLines("C:\\Users\\Alex\\Desktop\\AdventOfCode2023\\src\\utilities\\input_day1.txt")
 	sum := 0
 	str := ""
@@ -52,5 +55,8 @@ func Day1() {
 		}
 		sum += chiffres[0]*10 + chiffres[len(chiffres)-1]
 	}
-	print(sum)
+	fmt.Printf("La somme est égal à %d.\n", sum)
+	fin := time.Now()
+	duree := fin.Sub(debut)
+	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duree)
 }

@@ -3,13 +3,19 @@ package day1
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
+	"os"
 	"time"
 	"unicode"
 )
 
 func Day1() {
 	debut := time.Now()
-	lines := utilities.ReadLines("C:\\Users\\Alex\\Desktop\\AdventOfCode2023\\src\\utilities\\input_day1.txt")
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path = path + "\\src\\utilities\\input_day1"
+	lines := utilities.ReadLines(path)
 	sum := 0
 	str := ""
 	for i := 0; i < len(lines); i++ {

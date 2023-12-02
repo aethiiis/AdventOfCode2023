@@ -3,6 +3,7 @@ package day2
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -10,7 +11,12 @@ import (
 
 func Day2() {
 	debut := time.Now()
-	lines := utilities.ReadLines("C:\\Users\\Alex\\Desktop\\AdventOfCode2023\\src\\utilities\\input_day2")
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path = path + "\\src\\utilities\\input_day2"
+	lines := utilities.ReadLines(path)
 	resultat := utilities.MapMaker(lines)
 	sum := 0
 	pow := 0
@@ -41,7 +47,6 @@ func Day2() {
 				}
 			}
 		}
-		fmt.Printf("Pour la clé %s, la valeur possible est %t.\n", key, possible)
 		pow += red * green * blue
 		if possible {
 			parts := strings.SplitN(key, " ", 2)

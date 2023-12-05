@@ -13,7 +13,7 @@ func Day3() {
 	if err != nil {
 		panic(err)
 	}
-	path = path + "/src/utilities/input_day3"
+	path = path + "/src/input/input_day3"
 	lines := utilities.ReadLines(path)
 	listSum, listFactor := utilities.DetectNumbersSymbols(lines)
 	sum := utilities.SumList(listSum)

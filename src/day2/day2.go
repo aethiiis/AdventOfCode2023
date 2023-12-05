@@ -15,7 +15,7 @@ func Day2() {
 	if err != nil {
 		panic(err)
 	}
-	path = path + "/src/utilities/input_day2"
+	path = path + "/src/input/input_day2"
 	lines := utilities.ReadLines(path)
 	resultat := utilities.MapMaker(lines)
 	sum := 0

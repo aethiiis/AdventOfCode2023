@@ -13,7 +13,7 @@ func Day4() {
 	if err != nil {
 		panic(err)
 	}
-	path = path + "/src/utilities/input_day4"
+	path = path + "/src/input/input_day4"
 	lines := utilities.ReadLines(path)
 	var listWinners [][]int
 	var listNumbers [][]int

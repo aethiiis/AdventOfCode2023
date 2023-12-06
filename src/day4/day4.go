@@ -1,19 +1,18 @@
-package day4
+package main
 
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
-	"os"
 	"time"
 )
 
+func main() {
+	Day4()
+}
+
 func Day4() {
 	debut := time.Now()
-	path, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-	path = path + "/src/input/input_day4"
+	path := "src/day4/input_day4"
 	lines := utilities.ReadLines(path)
 	var listWinners [][]int
 	var listNumbers [][]int

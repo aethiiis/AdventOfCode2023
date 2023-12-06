@@ -1,20 +1,19 @@
-package day1
+package main
 
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
-	"os"
 	"time"
 	"unicode"
 )
 
+func main() {
+	Day1()
+}
+
 func Day1() {
 	debut := time.Now()
-	path, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-	path = path + "/src/input/input_day1"
+	path := "src/day1/input_day1"
 	lines := utilities.ReadLines(path)
 	sum := 0
 	str := ""

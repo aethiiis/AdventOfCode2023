@@ -1,19 +1,18 @@
-package day3
+package main
 
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
-	"os"
 	"time"
 )
 
+func main() {
+	Day3()
+}
+
 func Day3() {
 	debut := time.Now()
-	path, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-	path = path + "/src/input/input_day3"
+	path := "src/day3/input_day3"
 	lines := utilities.ReadLines(path)
 	listSum, listFactor := utilities.DetectNumbersSymbols(lines)
 	sum := utilities.SumList(listSum)

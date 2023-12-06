@@ -1,8 +1,7 @@
-package day5
+package main
 
 import (
 	"advent_of_code_2023/src/utilities"
-	"fmt"
 	"math"
 )
 
@@ -46,7 +45,6 @@ func Part2(lines []string) int {
 		}
 		seeds = newSeeds
 	}
-	fmt.Printf("Les seeds à la fin : %v\n", seeds)
 	var minLoc = math.MaxInt
 	for _, couple := range seeds {
 		if couple[0] < minLoc {

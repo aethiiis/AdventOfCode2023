@@ -35,10 +35,10 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 		seeds = append(seeds, chiffre)
 	}
 
-	for i := range seeds {
+	/*for i := range seeds {
 		fmt.Printf("Les seeds sont %d\n", seeds[i])
 	}
-	fmt.Println("seeds fait !")
+	fmt.Println("seeds fait !")*/
 
 	// Traitement du premier paragraphe - Extraction de la seed-to-soil map
 	startSeed2Soil := 2
@@ -70,7 +70,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", seed2SoilNumbers[1]+j, seed2SoilNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("seed2Soil fait !")
+	//fmt.Println("seed2Soil fait !")
 
 	// Traitement du deuxième paragraphe - Extraction de la soil-to-fertiliser map
 	startSoil2Fertiliser := endSeed2Soil + 1
@@ -102,7 +102,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Soil2FertiliserNumbers[1]+j, Soil2FertiliserNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("Soil2Fertiliser fait !")
+	//fmt.Println("Soil2Fertiliser fait !")
 
 	// Traitement du troisième paragraphe - Extraction de la fertilizer-to-water map
 	startFertiliser2Water := endSoil2Fertiliser + 1
@@ -134,7 +134,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Fertiliser2WaterNumbers[1]+j, Fertiliser2WaterNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("Fertiliser2Water fait !")
+	//fmt.Println("Fertiliser2Water fait !")
 
 	// Traitement du quatrième paragraphe - Extraction de la water-to-light map
 	startWater2Light := endFertiliser2Water + 1
@@ -166,7 +166,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Water2LightNumbers[1]+j, Water2LightNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("water2Light fait !")
+	//fmt.Println("water2Light fait !")
 
 	// Traitement du cinquième paragraphe - Extraction de la light-to-temperature map
 	startLight2Temperature := endWater2Light + 1
@@ -198,7 +198,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Light2TemperatureNumbers[1]+j, Light2TemperatureNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("light2Temperature fait !")
+	//fmt.Println("light2Temperature fait !")
 
 	// Traitement du sixième paragraphe - Extraction de la temperature-to-humidity map
 	startTemperature2Humidity := endLight2Temperature + 1
@@ -230,7 +230,7 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Temperature2HumidityNumbers[1]+j, Temperature2HumidityNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("temperature2Humidity fait !")
+	//fmt.Println("temperature2Humidity fait !")
 
 	// Traitement du septième paragraphe - Extraction de la humidity-to-location map
 	startHumidity2Location := endTemperature2Humidity + 1
@@ -262,6 +262,6 @@ func ExtractMap(lines []string) ([]int, [][]int, [][]int, [][]int, [][]int, [][]
 			//fmt.Printf("Clé: %d, Valeur: %d\n", Humidity2LocationNumbers[1]+j, Humidity2LocationNumbers[0]+j)
 		}*/
 	}
-	fmt.Println("humidity2Location fait !")
+	//fmt.Println("humidity2Location fait !")
 	return seeds, seed2Soil, soil2Fertiliser, fertiliser2Water, water2Light, light2Temperature, temperature2Humidity, humidity2Location
 }

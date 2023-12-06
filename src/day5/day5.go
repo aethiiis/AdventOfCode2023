@@ -3,7 +3,6 @@ package day5
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
-	"math"
 	"os"
 	"time"
 )
@@ -16,8 +15,8 @@ func Day5() {
 	}
 	path = path + "/src/input/input_day5"
 	lines := utilities.ReadLines(path)
-
-	minLocation := math.MaxInt
+	location := Part2(lines)
+	/*minLocation := math.MaxInt
 	mapSeeds, mapSeed2Soil, mapSoil2Fertiliser, mapFertiliser2Water, mapWater2Light, mapLight2Temperature, mapTemperature2Humidity, mapHumidity2Location := utilities.ExtractMap(lines)
 
 	for _, seed := range mapSeeds {
@@ -114,7 +113,8 @@ func Day5() {
 	}
 
 	fmt.Printf("La location minimum pour la partie 1 est %d.\n", minLocation)
-	fmt.Printf("La location minimum pour la partie 2 est %d.\n", Day5_part2(lines))
+	fmt.Printf("La location minimum pour la partie 2 est %d.\n", Part2(lines))*/
+	fmt.Printf("La location minimum pour la partie 2 est %d.\n", location)
 	fin := time.Now()
 	duree := fin.Sub(debut)
 	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duree)

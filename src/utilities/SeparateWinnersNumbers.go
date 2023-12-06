@@ -8,19 +8,8 @@ import (
 
 func SeparateWinnersNumbers(lines []string) ([][]int, [][]int) {
 
-	lenWinners := 10
-	lenNumbers := 25
-
 	listWinners := make([][]int, len(lines))
 	listNumbers := make([][]int, len(lines))
-
-	for j := range listWinners {
-		listWinners[j] = make([]int, lenWinners)
-	}
-
-	for j := range listNumbers {
-		listNumbers[j] = make([]int, lenNumbers)
-	}
 
 	for i := range lines {
 
@@ -30,11 +19,22 @@ func SeparateWinnersNumbers(lines []string) ([][]int, [][]int) {
 
 		winnersNumbers := strings.SplitN(split[1], "|", 2)
 
+		//fmt.Printf("Voici winnersNumbers %v\n", winnersNumbers)
+
+		lenWinners := CompterNombreNombreInString(winnersNumbers[0])
+		lenNumbers := CompterNombreNombreInString(winnersNumbers[1])
+
+		//fmt.Printf("lenWinners : %d\n", lenWinners)
+		//fmt.Printf("lenNumbers : %d\n", lenNumbers)
+
 		winners := strings.SplitN(winnersNumbers[0], " ", lenWinners+1)
 		numbers := strings.SplitN(winnersNumbers[1], " ", lenNumbers+1)
 
 		winners = winners[1:]
 		numbers = numbers[1:]
+
+		listWinners[i] = make([]int, lenWinners)
+		listNumbers[i] = make([]int, lenNumbers)
 
 		for j := range winners {
 			chiffre, err := strconv.Atoi(strings.Trim(winners[j], " "))

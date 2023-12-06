@@ -7,19 +7,29 @@ import (
 )
 
 func main() {
-	Day3()
-}
-
-func Day3() {
+	// Démarrage du chrono
 	debut := time.Now()
+
+	// On charge le fichier et le divise ligne par ligne
+	pathTest := "src/day3/input_day3_test"
+	linesTest := utilities.ReadLines(pathTest)
+
 	path := "src/day3/input_day3"
 	lines := utilities.ReadLines(path)
-	listSum, listFactor := utilities.DetectNumbersSymbols(lines)
-	sum := utilities.SumList(listSum)
-	factor := utilities.Sum2ProductList(listFactor)
-	fmt.Printf("La somme des nombres concernés est : %d.\n", sum)
-	fmt.Printf("La somme des facteurs est égale à %d.\n", factor)
+
+	// Part1
+	loc1Test := Part1(linesTest)
+	fmt.Printf("La somme pour la partie 1 avec l'exemple est %d.\n", loc1Test)
+	loc1 := Part1(lines)
+	fmt.Printf("La somme pour la partie 1 est %d.\n", loc1)
+
+	// Part2
+	loc2Test := Part2(linesTest)
+	fmt.Printf("Le produit pour la partie 2 avec l'exemple est %d.\n", loc2Test)
+	loc2 := Part2(lines)
+	fmt.Printf("Le produit pour la partie 2 est %d.\n", loc2)
+
 	fin := time.Now()
-	duree := fin.Sub(debut)
-	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duree)
+	duration := fin.Sub(debut)
+	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duration)
 }

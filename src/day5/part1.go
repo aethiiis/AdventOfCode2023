@@ -25,7 +25,7 @@ func Part1(lines []string) int {
 		var isInWater = false
 		var isInLight = false
 		var isInTemp = false
-		var isInHumi = false
+		var isInHumid = false
 
 		for i := range mapSeed2Soil {
 			if seed >= mapSeed2Soil[i][1] && seed < mapSeed2Soil[i][1]+mapSeed2Soil[i][2] {
@@ -89,11 +89,11 @@ func Part1(lines []string) int {
 
 		for i := range mapHumidity2Location {
 			if humidity >= mapHumidity2Location[i][1] && humidity < mapHumidity2Location[i][1]+mapHumidity2Location[i][2] {
-				isInHumi = true
+				isInHumid = true
 				location = humidity - mapHumidity2Location[i][1] + mapHumidity2Location[i][0]
 			}
 		}
-		if !isInHumi {
+		if !isInHumid {
 			location = humidity
 		}
 

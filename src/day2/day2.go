@@ -3,63 +3,33 @@ package main
 import (
 	"advent_of_code_2023/src/utilities"
 	"fmt"
-	"strconv"
-	"strings"
 	"time"
 )
 
 func main() {
-	Day2()
-}
-
-func Day2() {
+	// Démarrage du chrono
 	debut := time.Now()
+
+	// On charge le fichier et le divise ligne par ligne
+	pathTest := "src/day2/input_day2_test"
+	linesTest := utilities.ReadLines(pathTest)
+
 	path := "src/day2/input_day2"
 	lines := utilities.ReadLines(path)
-	resultat := utilities.MapMaker(lines)
-	sum := 0
-	pow := 0
 
-	for key, grandeList := range resultat {
-		possible := true
-		red := 0
-		green := 0
-		blue := 0
-		for _, petiteList := range grandeList {
-			for _, valeur := range petiteList {
-				split := strings.SplitN(valeur, " ", 2)
-				chiffre, err := strconv.Atoi(split[0])
-				if err != nil {
-					fmt.Println("Erreur de conversion :", err)
-					return
-				}
-				couleur := split[1]
-				if couleur == "red" && chiffre > red {
-					red = chiffre
-				} else if couleur == "green" && chiffre > green {
-					green = chiffre
-				} else if couleur == "blue" && chiffre > blue {
-					blue = chiffre
-				}
-				if (chiffre > 12 && couleur == "red") || (chiffre > 13 && couleur == "green") || (chiffre > 14 && couleur == "blue") {
-					possible = false
-				}
-			}
-		}
-		pow += red * green * blue
-		if possible {
-			parts := strings.SplitN(key, " ", 2)
-			temp, err := strconv.Atoi(parts[1])
-			if err != nil {
-				fmt.Println("Erreur de conversion :", err)
-				return
-			}
-			sum += temp
-		}
-	}
-	fmt.Printf("La somme des games possibles est : %d.\n", sum)
-	fmt.Printf("La puissance des games est : %d.\n", pow)
+	// Part1
+	loc1Test := Part1(linesTest)
+	fmt.Printf("La somme des IDs pour la partie 1 avec l'exemple est %d.\n", loc1Test)
+	loc1 := Part1(lines)
+	fmt.Printf("La somme des IDs pour la partie 1 est %d.\n", loc1)
+
+	// Part2
+	loc2Test := Part2(linesTest)
+	fmt.Printf("La somme de la puissance pour la partie 2 avec l'exemple est %d.\n", loc2Test)
+	loc2 := Part2(lines)
+	fmt.Printf("La somme de la puissance pour la partie 2 est %d.\n", loc2)
+
 	fin := time.Now()
-	duree := fin.Sub(debut)
-	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duree)
+	duration := fin.Sub(debut)
+	fmt.Printf("La fonction a pris %s pour s'exécuter.\n", duration)
 }

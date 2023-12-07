@@ -45,3 +45,21 @@ func TestPart2(t *testing.T) {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
 	}
 }
+
+func BenchmarkPart1(b *testing.B) {
+	path := "input_day1"
+	lines := utilities.ReadLines(path)
+
+	for i := 0; i < b.N; i++ {
+		Part1(lines)
+	}
+}
+
+func BenchmarkPart2(b *testing.B) {
+	path := "input_day1"
+	lines := utilities.ReadLines(path)
+
+	for i := 0; i < b.N; i++ {
+		Part2(lines)
+	}
+}

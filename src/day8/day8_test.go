@@ -40,10 +40,13 @@ func TestPart2Example3(t *testing.T) {
 	path := "input_day8_test3"
 	lines := utilities.ReadLines(path)
 
-	res := Part2(lines)
-	exp := 6
-	if res != exp {
-		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
+	var res64 int64
+	res64 = Part2(lines).Int64()
+	var exp64 int64
+	exp64 = 6
+
+	if res64 != exp64 {
+		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp64, res64)
 	}
 }
 
@@ -51,10 +54,13 @@ func TestPart2(t *testing.T) {
 	path := "input_day8"
 	lines := utilities.ReadLines(path)
 
-	res := Part2(lines)
-	exp := 248256639
-	if res != exp {
-		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
+	var res64 int64
+	res64 = Part2(lines).Int64()
+	var exp64 int64
+	exp64 = 22103062509257
+
+	if res64 != exp64 {
+		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp64, res64)
 	}
 }
 

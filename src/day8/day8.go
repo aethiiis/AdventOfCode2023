@@ -13,10 +13,10 @@ func main() {
 	// On charge le fichier et le divise ligne par ligne
 	pathTest1 := "src/day8/input_day8_test1"
 	pathTest2 := "src/day8/input_day8_test2"
-	//pathTest3 := "src/day8/input_day8_test3"
+	pathTest3 := "src/day8/input_day8_test3"
 	linesTest1 := utilities.ReadLines(pathTest1)
 	linesTest2 := utilities.ReadLines(pathTest2)
-	//linesTest3 := utilities.ReadLines(pathTest3)
+	linesTest3 := utilities.ReadLines(pathTest3)
 
 	path := "src/day8/input_day8"
 	lines := utilities.ReadLines(path)
@@ -30,8 +30,8 @@ func main() {
 	fmt.Printf("Les gains pour la partie 1 est %d.\n", loc1)
 
 	// Part2
-	/*loc2Test := Part2(linesTest3)
-	fmt.Printf("Le nombre d'étapes pour la partie 2 avec l'exemple est %d.\n", loc2Test)*/
+	loc2Test := Part2(linesTest3)
+	fmt.Printf("Le nombre d'étapes pour la partie 2 avec l'exemple est %d.\n", loc2Test)
 	loc2 := Part2(lines)
 	fmt.Printf("Les gains pour la partie 2 est %d.\n", loc2)
 

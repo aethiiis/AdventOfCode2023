@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"math/big"
 	"strings"
 )
 
-func Part2(lines []string) int {
+func Part2(lines []string) *big.Int {
 	instructions, mapLoc := getMap(lines)
 
 	var startingNodes []string
@@ -15,35 +15,53 @@ func Part2(lines []string) int {
 		}
 	}
 
-	fmt.Printf("instructions est : %v\n", instructions)
-	fmt.Printf("mapLoc est : %v\n", mapLoc)
-
-	count := 0
 	index := 0
 
-	for !isAllZ(startingNodes) {
-		fmt.Printf("Starting node est : %v\n", startingNodes)
-		instruction := instructions[index]
-		if index == len(instructions)-1 {
-			index = 0
-		} else {
-			index++
-		}
+	countNodes := make([]int64, len(startingNodes))
 
-		for j := range startingNodes {
-			startingNodes[j] = mapLoc[startingNodes[j]][instruction]
-		}
+	for i := range startingNodes {
+		for !strings.HasSuffix(startingNodes[i], "Z") {
+			instruction := instructions[index]
+			if index == len(instructions)-1 {
+				index = 0
+			} else {
+				index++
+			}
 
-		count++
+			startingNodes[i] = mapLoc[startingNodes[i]][instruction]
+
+			countNodes[i]++
+		}
 	}
-	return count
+
+	return ppcmMultiples(countNodes)
 }
 
-func isAllZ(startingNodes []string) bool {
-	for i := range startingNodes {
-		if !strings.HasSuffix(startingNodes[i], "Z") {
-			return false
-		}
+func pgcdMultiples(nombres []int64) *big.Int {
+	if len(nombres) < 2 {
+		panic("La fonction pgcdMultiples nécessite au moins deux nombres.")
 	}
-	return true
+
+	resultat := big.NewInt(nombres[0])
+
+	for _, nombre := range nombres[1:] {
+		resultat.GCD(nil, nil, resultat, big.NewInt(nombre))
+	}
+
+	return resultat
+}
+
+func ppcmMultiples(nombres []int64) *big.Int {
+	if len(nombres) < 2 {
+		panic("La fonction ppcmMultiples nécessite au moins deux nombres.")
+	}
+
+	resultat := new(big.Int).Set(big.NewInt(nombres[0]))
+
+	for _, nombre := range nombres[1:] {
+		resultat.Mul(resultat, big.NewInt(nombre))
+		resultat.Div(resultat, pgcdMultiples(nombres))
+	}
+
+	return resultat
 }

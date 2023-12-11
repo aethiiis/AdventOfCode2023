@@ -126,23 +126,26 @@ func Part2(lines []string) int {
 		}
 	}
 
-	for i := 0; i < len(runeTab2); i++ {
+	for i := 1; i < len(runeTab2)-1; i++ {
 		if runeTab2[i][0] == '.' || runeTab2[i][0] == ',' {
 			runeTab2[i][0] = '0'
 		}
 	}
 
-	for i := 0; i < len(runeTab2); i++ {
+	for i := 1; i < len(runeTab2)-1; i++ {
 		if runeTab2[i][len(runeTab2[i])-1] == '.' || runeTab2[i][len(runeTab2[i])-1] == ',' {
 			runeTab2[i][len(runeTab2[i])-1] = '0'
 		}
 	}
 
-	for n := 0; n < 100; n++ {
+	checkChange := true
+	for checkChange {
+		checkChange = false
 		for i := range runeTab2 {
 			for j := range runeTab2[i] {
 				if (runeTab2[i][j] == '.' || runeTab2[i][j] == ',') && utilities.IsNeighbourToZero(runeTab2, i, j) {
 					runeTab2[i][j] = '0'
+					checkChange = true
 				}
 			}
 		}

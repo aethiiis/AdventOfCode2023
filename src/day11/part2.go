@@ -2,19 +2,48 @@ package main
 
 import (
 	"advent_of_code_2023/src/utilities"
-	"fmt"
+	"math"
+	"strings"
 )
 
 func Part2(lines []string) int {
-	var galax [][]int
-	/*var emptyLine []int
-	var emptyColumn []int*/
-	newLines := utilities.DoubleEmptyLineColumn(lines, "*")
-	fmt.Println("Voici newLines : ")
+	sum := 0
+	newLines := make([]string, len(lines))
+	copy(newLines, lines)
+
+	var emptyLine []int
 	for i := range newLines {
-		fmt.Println(newLines[i])
+		diese := false
+		for _, char := range newLines[i] {
+			if char == '#' {
+				diese = true
+			}
+		}
+		if !diese {
+			newLines[i] = strings.Repeat("*", len(lines[i]))
+			emptyLine = append(emptyLine, i)
+		}
 	}
 
+	newLines = utilities.Transpose(newLines)
+
+	var emptyColumn []int
+	for i := range newLines {
+		diese := false
+		for _, char := range newLines[i] {
+			if char == '#' {
+				diese = true
+			}
+		}
+		if !diese {
+			newLines[i] = strings.Repeat("*", len(lines[i]))
+			emptyColumn = append(emptyColumn, i)
+		}
+	}
+
+	newLines = utilities.Transpose(newLines)
+
+	var galax [][]int
 	tab := utilities.ConvertirListeStringsTableauRunes(newLines)
 	for i := range tab {
 		for j := range tab[i] {
@@ -23,46 +52,31 @@ func Part2(lines []string) int {
 			}
 		}
 	}
-	//fmt.Printf("Voici galax : %v\n", galax)*
 
-	sum := 0
+	for index, point := range galax {
+		for otherIndex, otherPoint := range galax {
+			if index < otherIndex {
 
-	/*grid := utilities.ConvertirTableauRuneGrid(tab)
-	start := utilities.Pos{X: galax[0][0], Y: galax[0][1]}
-	goal := utilities.Pos{X: galax[1][0], Y: galax[1][1]}
-	frontier := make(utilities.PriorityQueue, 0)
-	heap.Push(&frontier, &utilities.Item{Value: start, Priority: 1})
-	cameFrom := make(map[utilities.Pos]utilities.Pos)
-	costSoFar := make(map[utilities.Pos]int)
-	cameFrom[start] = utilities.Pos{}
-	costSoFar[start] = 0
+				// Check ligne
+				var nbLine int
+				for i := int(math.Min(float64(point[0]), float64(otherPoint[0]))); i <= int(math.Max(float64(point[0]), float64(otherPoint[0]))); i++ {
+					if utilities.IsIn(emptyLine, i) {
+						nbLine++
+					}
+				}
 
-	for frontier.Len() != 0 {
-		current := heap.Pop(&frontier).(*utilities.Item)
+				// Check colonne
+				var nbCol int
+				for i := int(math.Min(float64(point[1]), float64(otherPoint[1]))); i <= int(math.Max(float64(point[1]), float64(otherPoint[1]))); i++ {
+					if utilities.IsIn(emptyColumn, i) {
+						nbCol++
+					}
+				}
 
-		listNeighbors, _ := grid.NeighboursRune(current.Value)
-		for _, next := range listNeighbors {
-			var nextCost int
-			if grid[next] == '*' {
-				nextCost = 10
-			} else {
-				nextCost = 1
-			}
-
-			newCost := costSoFar[current.Value] + nextCost
-			if _, ok := costSoFar[next]; !ok || newCost < costSoFar[next] {
-				costSoFar[next] = newCost
-				heap.Push(&frontier, &utilities.Item{
-					Value:    next,
-					Priority: newCost,
-				})
-				cameFrom[next] = current.Value
-			}
-			if current.Value == goal {
-				break
+				plus := int(math.Abs(float64(otherPoint[0]-point[0]))) + int(math.Abs(float64(otherPoint[1]-point[1]))) + (1000000-1)*nbLine + (1000000-1)*nbCol
+				sum += plus
 			}
 		}
 	}
-	fmt.Printf("Voici le coup pour aller de 1 à 2 : %d\n", costSoFar[goal])*/
 	return sum
 }

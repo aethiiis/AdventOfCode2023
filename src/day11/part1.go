@@ -2,17 +2,12 @@ package main
 
 import (
 	"advent_of_code_2023/src/utilities"
-	"fmt"
 	"math"
 )
 
 func Part1(lines []string) int {
 	var galax [][]int
 	newLines := utilities.DoubleEmptyLineColumn(lines, ".")
-	fmt.Println("Voici newLines : ")
-	for i := range newLines {
-		fmt.Println(newLines[i])
-	}
 
 	tab := utilities.ConvertirListeStringsTableauRunes(newLines)
 	for i := range tab {

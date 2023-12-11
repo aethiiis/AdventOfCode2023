@@ -13,4 +13,6 @@ Array.from({length: lines.length}, (v, i) => {
     })
     digits.push(parseInt(digit[0] + digit[digit.length-1]))
 })
-console.log(digits.reduce((acc, cur) => acc + cur, 0))
+const sum = digits.reduce((acc, cur) => acc + cur, 0)
+console.log(sum)
+module.exports = sum

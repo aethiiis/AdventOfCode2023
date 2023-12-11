@@ -8,7 +8,6 @@ import (
 
 func Part1(lines []string) int {
 	var galax [][]int
-	//dist := 0
 	newLines := utilities.DoubleEmptyLineColumn(lines, ".")
 	fmt.Println("Voici newLines : ")
 	for i := range newLines {

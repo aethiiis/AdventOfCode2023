@@ -72,8 +72,6 @@ func Part2(lines []string) int {
 			blockSum += possibleModif(blocTrans, colonnePart1[i])
 			if blockSum != 0 {
 				sum += blockSum
-			} else {
-
 			}
 		}
 	}
@@ -99,21 +97,6 @@ func possibleModif(bloc []string, exclusion int) int {
 				}
 				if sum == 0 {
 					bloc[i] = inverseChar(bloc[i], index)
-					bloc[j] = inverseChar(bloc[j], index)
-					for k := range bloc {
-						if k != exclusion {
-							sum = checkSymmetry(bloc, k)
-							if sum != 0 {
-								break
-							}
-						}
-					}
-					if sum != 0 {
-						breakFor = true
-						break
-					} else {
-						bloc[j] = inverseChar(bloc[j], index)
-					}
 				} else {
 					breakFor = true
 					break

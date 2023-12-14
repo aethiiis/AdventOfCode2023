@@ -12,7 +12,7 @@ func Part1(lines []string) int {
 	for i := range tab {
 		for j := range tab[i] {
 			if tab[i][j] == 'O' {
-				poids += len(lines) - chute(&tab, i, j)
+				poids += len(lines) - north(&tab, i, j)
 			}
 		}
 	}
@@ -23,7 +23,7 @@ func Part1(lines []string) int {
 	return poids
 }
 
-func chute(tab *[][]rune, i, j int) int {
+func north(tab *[][]rune, i, j int) int {
 	if (*tab)[i][j] != 'O' {
 		panic("Appel non-valide")
 	}

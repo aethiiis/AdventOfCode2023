@@ -18,16 +18,16 @@ func main() {
 	lines := utilities.ReadLines(path)
 
 	// Part1
-	loc1Test1 := Part1(linesTest1)
+	/*loc1Test1 := Part1(linesTest1)
 	fmt.Printf("La distance pour la partie 1 avec l'exemple 1 est %d.\n", loc1Test1)
 	loc1 := Part1(lines)
-	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)
+	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)*/
 
 	// Part2
-	/*loc2Test1 := Part2(linesTest1)
+	loc2Test1 := Part2(linesTest1)
 	fmt.Printf("La distance pour la partie 2 avec l'exemple 1 est %d.\n", loc2Test1)
 	loc2 := Part2(lines)
-	fmt.Printf("Les gains pour la partie 2 est %d.\n", loc2)*/
+	fmt.Printf("Les gains pour la partie 2 est %d.\n", loc2)
 
 	fin := time.Now()
 	duration := fin.Sub(debut)

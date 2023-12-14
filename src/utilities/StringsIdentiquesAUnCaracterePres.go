@@ -1,7 +1,5 @@
 package utilities
 
-import "strings"
-
 func StringsIdentiquesAUnCaracterePres(s1, s2 string) (bool, int) {
 	// Vérifie si les chaînes ont la même longueur
 	if len(s1) != len(s2) {
@@ -12,7 +10,7 @@ func StringsIdentiquesAUnCaracterePres(s1, s2 string) (bool, int) {
 	diffCount := 0
 	index := -2
 	for i := 0; i < len(s1); i++ {
-		if !strings.EqualFold(string(s1[i]), string(s2[i])) {
+		if s1[i] != s2[i] {
 			diffCount++
 			index = i
 		}

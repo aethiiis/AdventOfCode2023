@@ -20,8 +20,8 @@ func main() {
 	// Part1
 	loc1Test1 := Part1(linesTest1)
 	fmt.Printf("La distance pour la partie 1 avec l'exemple 1 est %d.\n", loc1Test1)
-	loc1 := Part1(lines)
-	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)
+	/*loc1 := Part1(lines)
+	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)*/
 
 	// Part2
 	loc2Test1 := Part2(linesTest1)

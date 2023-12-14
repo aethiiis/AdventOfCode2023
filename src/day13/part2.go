@@ -2,7 +2,6 @@ package main
 
 import (
 	"advent_of_code_2023/src/utilities"
-	"fmt"
 )
 
 func Part2(lines []string) int {
@@ -15,12 +14,6 @@ func Part2(lines []string) int {
 		}
 	}
 
-	/*fmt.Println("Les emptyLines sont : ")
-	for i := range emptyLines {
-		fmt.Println(emptyLines[i])
-		fmt.Println("et")
-	}*/
-
 	blocs = append(blocs, lines[0:emptyLines[0]])
 	for i := 0; i < len(emptyLines); i++ {
 		if i == len(emptyLines)-1 {
@@ -30,93 +23,118 @@ func Part2(lines []string) int {
 		}
 	}
 
-	/*fmt.Println("Les blocs sont : ")
-	for i := range blocs {
-		for j := range blocs[i] {
-			fmt.Println(blocs[i][j])
-		}
-		fmt.Println("et")
-	}*/
-
 	// Symétrie
-	/*fmt.Printf("Voici blocs : %v\n", blocs)*/
-	sum := 0
-	for _, bloc := range blocs {
-		modified := false
+	// Partie 1
+	var lignePart1 []int
+	var colonnePart1 []int
+	lignePart1 = make([]int, len(blocs))
+	colonnePart1 = make([]int, len(blocs))
+	for i := range lignePart1 {
+		lignePart1[i] = -1
+		colonnePart1[i] = -1
+	}
+
+	for i, bloc := range blocs {
+		blockSum := 0
 		symmetry := false
 		for j := range bloc {
-			if j < len(bloc)-1 && bloc[j] == bloc[j+1] {
-				check := true
-				count := 1
-
-				for j-count >= 0 && j+count+1 < len(bloc) && check {
-					firstPart := bloc[j-count : j+1]
-					secondPart := utilities.FlipLine(bloc[j+1 : j+2+count])
-					/*fmt.Printf("Voici firstPart :  %v\n", firstPart)
-					fmt.Printf("Voici secondPart : %v\n", secondPart)*/
-					if len(firstPart) != len(secondPart) {
-						panic("Problème de dimension")
-					} else {
-						for k := range firstPart {
-							if firstPart[k] != secondPart[k] {
-								check = false
-								break
-							}
-						}
-					}
-					count++
-				}
-				/*fmt.Printf("Voici check : %t\n", check)
-				fmt.Printf("Voici count : %d\n", count)*/
-				if check {
-					sum += (j + 1) * 100
-					symmetry = true
-				}
+			blockSum += checkSymmetry(bloc, j)
+			if blockSum != 0 {
+				lignePart1[i] = j
+				symmetry = true
+				blockSum *= 100
+				break
 			}
 		}
+
 		if !symmetry {
 			blocTrans := utilities.Transpose(bloc)
 			for j := range blocTrans {
-				if j < len(blocTrans)-1 && blocTrans[j] == blocTrans[j+1] {
-					check := true
-					count := 1
-
-					for j-count >= 0 && j+count+1 < len(blocTrans) && check {
-						firstPart := blocTrans[j-count : j+1]
-						secondPart := utilities.FlipLine(blocTrans[j+1 : j+2+count])
-						/*fmt.Printf("Voici firstPart :  %v\n", firstPart)
-						fmt.Printf("Voici secondPart : %v\n", secondPart)*/
-						if len(firstPart) != len(secondPart) {
-							panic("Problème de dimension")
-						} else {
-							for k := range firstPart {
-								if ok, index := utilities.StringsIdentiquesAUnCaracterePres(firstPart[k], secondPart[k]); !modified && ok {
-									modified = false
-									if blocTrans[j-count+k][index] == '.' {
-										blocTrans[j-count+k] = blocTrans[j-count+k][0:index] + "#" + blocTrans[j-count+k][index+1:]
-									} else if blocTrans[j-count+k][index] == '#' {
-										blocTrans[j-count+k] = blocTrans[j-count+k][0:index] + "." + blocTrans[j-count+k][index+1:]
-									} else {
-										panic("Caractère non reconnu")
-									}
-									count--
-								}
-								check = false
-								break
-							}
-						}
-						count++
-					}
-					/*fmt.Printf("Voici check : %t\n", check)
-					fmt.Printf("Voici count : %d\n", count)*/
-					if check {
-						sum += j + 1
-					}
+				blockSum += checkSymmetry(blocTrans, j)
+				if blockSum != 0 {
+					colonnePart1[i] = j
+					symmetry = true
+					break
 				}
 			}
 		}
-		fmt.Printf("Voici sum : %d\n", sum)
 	}
 
+	// Partie 2
+	sum := 0
+	for i, bloc := range blocs {
+		blockSum := 0
+		blockSum += possibleModif(bloc, lignePart1[i])
+		if blockSum != 0 {
+			sum += blockSum * 100
+		} else {
+			blocTrans := utilities.Transpose(bloc)
+			blockSum += possibleModif(blocTrans, colonnePart1[i])
+			if blockSum != 0 {
+				sum += blockSum
+			} else {
+
+			}
+		}
+	}
 	return sum
+}
+
+func possibleModif(bloc []string, exclusion int) int {
+	var sum int
+	var breakFor bool
+	breakFor = false
+
+	for i := range bloc {
+		for j := range bloc {
+			if ok, index := utilities.StringsIdentiquesAUnCaracterePres(bloc[i], bloc[j]); ok && i < j && (i+j)%2 == 1 {
+				bloc[i] = inverseChar(bloc[i], index)
+				for k := range bloc {
+					if k != exclusion {
+						sum = checkSymmetry(bloc, k)
+						if sum != 0 {
+							break
+						}
+					}
+				}
+				if sum == 0 {
+					bloc[i] = inverseChar(bloc[i], index)
+					bloc[j] = inverseChar(bloc[j], index)
+					for k := range bloc {
+						if k != exclusion {
+							sum = checkSymmetry(bloc, k)
+							if sum != 0 {
+								break
+							}
+						}
+					}
+					if sum != 0 {
+						breakFor = true
+						break
+					} else {
+						bloc[j] = inverseChar(bloc[j], index)
+					}
+				} else {
+					breakFor = true
+					break
+				}
+			}
+		}
+		if breakFor {
+			break
+		}
+	}
+	return sum
+}
+
+func inverseChar(line string, index int) string {
+	var newLine string
+	if line[index] == '#' {
+		newLine = line[0:index] + "." + line[index+1:]
+	} else if line[index] == '.' {
+		newLine = line[0:index] + "#" + line[index+1:]
+	} else {
+		panic("Caractère non-reconnu")
+	}
+	return newLine
 }

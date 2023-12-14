@@ -40,7 +40,7 @@ func TestPart2(t *testing.T) {
 	lines := utilities.ReadLines(path)
 
 	res := Part2(lines)
-	exp := 791134099634
+	exp := 36771
 	if res != exp {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
 	}

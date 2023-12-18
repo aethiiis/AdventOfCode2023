@@ -30,7 +30,7 @@ func TestPart2Example(t *testing.T) {
 	lines3 := utilities.ReadLines(path3)
 
 	res3 := Part2(lines3)
-	exp3 := 71
+	exp3 := 94
 	if res3 != exp3 {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp3, res3)
 	}

@@ -86,6 +86,7 @@ func Part2(lines []string) int {
 		str += string(tab[i])
 	}
 	first := vus[str]
+	//fmt.Printf("Voici first et iter : %d, %d\n", first, iter)
 	finalTab := liste[(1000000000-first)%(iter-first)+first]
 	sum := 0
 	for i := range finalTab {

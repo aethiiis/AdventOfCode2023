@@ -11,10 +11,10 @@ func main() {
 	debut := time.Now()
 
 	// On charge le fichier et le divise ligne par ligne
-	pathTest1 := "src/day17/input_day18_test"
+	pathTest1 := "src/day18/input_day18_test"
 	linesTest1 := utilities.ReadLines(pathTest1)
 
-	path := "src/day17/input_day18"
+	path := "src/day18/input_day18"
 	lines := utilities.ReadLines(path)
 
 	// Part1
@@ -24,10 +24,10 @@ func main() {
 	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)
 
 	// Part2
-	loc2Test1 := Part2(linesTest1)
+	/*loc2Test1 := Part2(linesTest1)
 	fmt.Printf("La distance pour la partie 2 avec l'exemple 1 est %d.\n", loc2Test1)
 	loc2 := Part2(lines)
-	fmt.Printf("Les gains pour la partie 2 est %d.\n", loc2)
+	fmt.Printf("Les gains pour la partie 2 est %d.\n", loc2)*/
 
 	fin := time.Now()
 	duration := fin.Sub(debut)

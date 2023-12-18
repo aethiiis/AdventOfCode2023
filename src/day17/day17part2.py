@@ -2,7 +2,7 @@ import timeit
 from heapq import heappush, heappop
 def part2():
 
-    tab = [list(map(int, line.strip())) for line in open("input_day17", "r")]
+    tab = [list(map(int, line.strip())) for line in open("input_day17_test", "r")]
 
     parcourus = set()
     frontier = [(0, 0, 0, 0, 0, 0)] #cost, x, y, dx, dy, consecutive steps

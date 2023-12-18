@@ -1,13 +1,13 @@
 from heapq import heappush, heappop
 
-tab = [list(map(int, line.strip())) for line in open("input_day17", "r")]
+tab = [list(map(int, line.strip())) for line in open("input_day17_test", "r")]
 
 parcourus = set()
 frontier = [(0, 0, 0, 0, 0, 0)] #cost, x, y, dx, dy, consecutive steps
 
 while frontier:
     cost, x, y, dx, dy, con = heappop(frontier)
-
+    print(cost, x, y, dx, dy, con)
     if x == len(tab)-1 and y == len(tab[0])-1:
         print(cost)
         break

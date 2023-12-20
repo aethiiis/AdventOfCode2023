@@ -11,16 +11,16 @@ func main() {
 	debut := time.Now()
 
 	// On charge le fichier et le divise ligne par ligne
-	pathTest1 := "src/day16/input_day16_test"
+	pathTest1 := "src/day20/input_day20_test"
 	linesTest1 := utilities.ReadLines(pathTest1)
 
-	path := "src/day16/input_day16"
+	path := "src/day20/input_day20"
 	lines := utilities.ReadLines(path)
 
 	// Part1
-	loc1Test1 := Part1_3(linesTest1)
+	loc1Test1 := Part1(linesTest1)
 	fmt.Printf("La distance pour la partie 1 avec l'exemple 1 est %d.\n", loc1Test1)
-	loc1 := Part1_3(lines)
+	loc1 := Part1(lines)
 	fmt.Printf("La distance pour la partie 1 est %d.\n", loc1)
 
 	// Part2

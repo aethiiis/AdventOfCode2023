@@ -6,7 +6,7 @@ import (
 
 func Part1_3(grid []string) int {
 
-	a := [][4]int{{0, -1, 0, 1}}
+	a := [][4]int{{0, 0, 0, 1}}
 	seen := make(map[[4]int]bool)
 	q := make([][4]int, 0)
 

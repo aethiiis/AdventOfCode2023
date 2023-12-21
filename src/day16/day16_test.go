@@ -20,7 +20,7 @@ func TestPart1(t *testing.T) {
 	path := "input_day16"
 	lines := utilities.ReadLines(path)
 	res := Part1(lines)
-	exp := 505427
+	exp := 7034
 	if res != exp {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
 	}
@@ -30,7 +30,7 @@ func TestPart2Example(t *testing.T) {
 	lines3 := utilities.ReadLines(path3)
 
 	res3 := Part2(lines3)
-	exp3 := 145
+	exp3 := 51
 	if res3 != exp3 {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp3, res3)
 	}
@@ -40,7 +40,7 @@ func TestPart2(t *testing.T) {
 	lines := utilities.ReadLines(path)
 
 	res := Part2(lines)
-	exp := 243747
+	exp := 7759
 	if res != exp {
 		t.Errorf("Mauvaise valeur : on s'attendait à %d mais on a obtenu %d.\n", exp, res)
 	}

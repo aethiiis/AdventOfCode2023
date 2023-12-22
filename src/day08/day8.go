@@ -11,14 +11,14 @@ func main() {
 	debut := time.Now()
 
 	// On charge le fichier et le divise ligne par ligne
-	pathTest1 := "src/day8/input_day8_test1"
-	pathTest2 := "src/day8/input_day8_test2"
-	pathTest3 := "src/day8/input_day8_test3"
+	pathTest1 := "src/day08/input_day8_test1"
+	pathTest2 := "src/day08/input_day8_test2"
+	pathTest3 := "src/day08/input_day8_test3"
 	linesTest1 := utilities.ReadLines(pathTest1)
 	linesTest2 := utilities.ReadLines(pathTest2)
 	linesTest3 := utilities.ReadLines(pathTest3)
 
-	path := "src/day8/input_day8"
+	path := "src/day08/input_day8"
 	lines := utilities.ReadLines(path)
 
 	// Part1

@@ -11,13 +11,13 @@ func main() {
 	debut := time.Now()
 
 	// On charge le fichier et le divise ligne par ligne
-	pathTest1 := "src/day1/input_day1_test1"
+	pathTest1 := "src/day01/input_day1_test1"
 	linesTest1 := utilities.ReadLines(pathTest1)
 
-	pathTest2 := "src/day1/input_day1_test2"
+	pathTest2 := "src/day01/input_day1_test2"
 	linesTest2 := utilities.ReadLines(pathTest2)
 
-	path := "src/day1/input_day1"
+	path := "src/day01/input_day1"
 	lines := utilities.ReadLines(path)
 
 	// Part1

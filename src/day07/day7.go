@@ -11,17 +11,17 @@ func main() {
 	debut := time.Now()
 
 	// On charge le fichier et le divise ligne par ligne
-	pathTest := "src/day9/input_day9_test"
+	pathTest := "src/day07/input_day7_test"
 	linesTest := utilities.ReadLines(pathTest)
 
-	path := "src/day9/input_day9"
+	path := "src/day07/input_day7"
 	lines := utilities.ReadLines(path)
 
 	// Part1
 	loc1Test := Part1(linesTest)
-	fmt.Printf("La somme pour la partie 1 avec l'exemple est %d.\n", loc1Test)
+	fmt.Printf("Les gains pour la partie 1 avec l'exemple est %d.\n", loc1Test)
 	loc1 := Part1(lines)
-	fmt.Printf("La somme pour la partie 1 est %d.\n", loc1)
+	fmt.Printf("Les gains pour la partie 1 est %d.\n", loc1)
 
 	// Part2
 	loc2Test := Part2(linesTest)

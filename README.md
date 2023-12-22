@@ -3,7 +3,7 @@ This repository is for the Advent of Code 2023!
 
 Semaine 1\
 Jour 1\
-Aucun problème en particulier, le problème est bruteforçable. Découverte des runes et du module strings.
+Aucun problème en particulier, le problème est bruteforçable. Découverte des runes et du module strings. Partie 1 également traitée en JavaScript pour tester.
 
 Jour 2\
 Création de la fonction ReadLines, afin de raccourcir le code pour les prochains jours.
